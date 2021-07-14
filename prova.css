@@ -1,5 +1,49 @@
-a{
-    align-self: center;
+.backwards{
+    position: relative;
     font-size: large;
-    
+    color: rgb(153, 255, 0);
+}
+legend{
+    color:darkgoldenrod;
+    font-size: larger;
+}
+
+form{
+    font-size: large;
+}
+
+.buttonInput{
+    position: relative;
+    margin-left: 15%;
+    color: white;
+    background-color: rgba(62, 62, 230, 0.8);
+    border-color: rgba(62, 62, 230, 0.8);
+    border-radius: 10px;
+    border-style: solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.redirect{
+    font-style: italic;
+}
+
+.results{
+    background-color: antiquewhite;
+    border-radius: 10px;
+    color: black;
+    font-size: large;
+    width: 50%;
+    height: 250px;  
+    border-color: black;
+    border-style: solid;
+}
+
+.error{
+    color: rgba(255, 255, 255, 0.815);
+    background-color: rgb(76, 23, 97);
+    font-size: large;
+    height: 900px;
+    width: 1870px;
+    text-align: center;
 }

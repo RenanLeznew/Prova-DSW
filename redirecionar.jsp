@@ -7,10 +7,11 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="\prova.css">
+        <link rel="stylesheet" type="text/css" href="prova.css">
         <title>JSP Page</title>
     </head>
     <body>
+        <h1 class="redirect"> Resultado da sua Pesquisa </h1>
         <%
             String Book_name, Author, Subject, Publisher, Edition, ID, Area_of_Knowledge, Scholarity, Format, Extra;
 
@@ -24,7 +25,9 @@
             Scholarity = request.getParameter("Scholarity");
             Format = request.getParameter("Format");
             Extra = request.getParameter("Extra"); 
-            
+        %>
+        <div class="results">
+        <%
             out.println("Nome do livro escolhido: " + Book_name + "<br>");
             out.println("Autor do livro escolhido: " + Author + "<br>");
             out.println("Assunto do livro escolhido: " + Subject + "<br>");
@@ -36,6 +39,7 @@
             out.println("Formato do livro escolhido: " + Format + "<br>");
             out.println("Extra escolhido com o livro: " + Extra + "<br>");
             %>
+        </div>
     </body>
     
 </html>

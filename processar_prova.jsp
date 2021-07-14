@@ -6,14 +6,16 @@
 <html lang="pt-BR">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="\prova.css">
+        <link rel="stylesheet" type="text/css" href="prova.css">
         <title>JSP Page</title>
     </head>
     <body>
+    <div class="error">
+    <h1> ERRO(s) ENCONTRADO(s)! </h1>
         <%! 
             public static String checkInformed(String tobechecked){
                 if(tobechecked == null || tobechecked.isEmpty() == true){
-                    String notFound = "nao foi informado";
+                    String notFound = "não foi informado";
                     return notFound;
                 } else{
                     return "false";
@@ -22,7 +24,7 @@
         %>
         <%
             String Book_name, Author, Subject, Publisher, Edition, ID, Area_of_Knowledge, Scholarity, Format, Extra;
-
+            boolean notInformed = false;
             Book_name = request.getParameter("Book_name");
             Author = request.getParameter("Author");
             Subject = request.getParameter("Subject");
@@ -33,85 +35,48 @@
             Scholarity = request.getParameter("Scholarity");
             Format = request.getParameter("Format");
             Extra = request.getParameter("Extra");
-
-            if(checkInformed(Book_name) == "nao foi informado"){
-                out.println("Nome do livro nao foi informado");
+            if(checkInformed(Subject) == "não foi informado"){
+                out.println("<p> Assunto do livro não foi informado </p>");
+                notInformed = true;
             }
-            if(checkInformed(Author) == "nao foi informado"){
-                out.println("Autor do livro nao foi informado");
-                %> 
+            if(checkInformed(Publisher) == "não foi informado"){
+                out.println("<p> Editora do livro não foi informada </p>");
+                notInformed = true;
+            }
+            if(checkInformed(Edition) == "não foi informado"){
+                out.println("<p> Edicão do livro não foi informada </p>");
+                notInformed = true;
+            }
+            if(checkInformed(ID) == "não foi informado"){
+                out.println("<p> ID do livro não foi informado </p>");
+                notInformed = true;
+            }
+            if(checkInformed(Area_of_Knowledge) == "não foi informado"){
+                out.println("<p> Area do livro não foi informada </p>");
+                notInformed = true;
+            }
+            if(checkInformed(Scholarity) == "não foi informado"){
+                out.println("<p> Escolaridade do livro não foi informado </p>");
+                notInformed = true;
+            }
+            if(checkInformed(Format) == "não foi informado"){
+                out.println("<p> Formato do livro não foi informado </p>");
+                notInformed = true;
+            }
+            if(checkInformed(Extra) == "não foi informado"){
+                out.println("<p> Acompanhamento extra do livro não foi informado </p>");
+                notInformed = true;
+            }
+            if(notInformed == false){
+                response.sendRedirect("redirecionar.jsp?Book_name=" + Book_name + "&Author=" + Author + "&Subject=" + Subject + "&Publisher=" + Publisher + "&Edition=" + Edition + "&ID=" + ID +"&Area_of_Knowledge=" + Area_of_Knowledge + "&Scholarity=" + Scholarity + "&Format=" + Format + "&Extra=" + Extra);
+            } else{
+                %>
                 <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
+                <a class="backwards"  href="principal_prova.jsp"> Voltar à página inicial.</a>
                 <%
             }
-            if(checkInformed(Subject) == "nao foi informado"){
-                out.println("Assunto do livro nao foi informado");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Publisher) == "nao foi informado"){
-                out.println("Editora do livro nao foi informada");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Edition) == "nao foi informado"){
-                out.println("Edicao do livro nao foi informada");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(ID) == "nao foi informado"){
-                out.println("ID do livro nao foi informado");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Area_of_Knowledge) == "nao foi informado"){
-                out.println("Area do livro nao foi informada");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Scholarity) == "nao foi informado"){
-                out.println("Escolaridade do livro nao foi informado");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Format) == "nao foi informado"){
-                out.println("Formato do livro nao foi informado");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            if(checkInformed(Extra) == "nao foi informado"){
-                out.println("Acompanhamento extra do livro nao foi informado");
-                %> 
-                <br>
-                <a href="principal_prova.jsp"> Voltar à página inicial.</a>
-                <br>
-                <%
-            }
-            
-            response.sendRedirect("redirecionar.jsp?Book_name=" + Book_name + "&Author=" + Author + "&Subject=" + Subject + "&Publisher=" + Publisher + "&Edition=" + Edition + "&ID=" + ID +"&Area_of_Knowledge=" + Area_of_Knowledge + "&Scholarity=" + Scholarity + "&Format=" + Format + "&Extra=" + Extra);
         %>
+        </div>
     </body>
     
 </html>
